@@ -58,7 +58,7 @@ For more information on module version pinning, see [Selecting a Revision](https
 | memory | Lambda Function memory in megabytes | string | `"256"` | no |
 | name | Resource name | string | n/a | yes |
 | runtime | Lambda Function runtime | string | `"python3.6"` | no |
-| starting\_position | see https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html | string | `"TRIM_HORIZON"` | no |
+| starting\_position | Kinesis ShardIterator type (see: https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html ) | string | `"TRIM_HORIZON"` | no |
 | tags | Resource tags | map | `<map>` | no |
 | timeout | Lambda Function timeout in seconds | string | `"60"` | no |
 | tracing\_mode | X-Ray tracing mode (see: https://docs.aws.amazon.com/lambda/latest/dg/API_TracingConfig.html ) | string | `"PassThrough"` | no |

@@ -43,7 +43,7 @@ variable "name" {
 }
 
 variable "starting_position" {
-  description = "see https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html"
+  description = "Kinesis ShardIterator type (see: https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html )"
   default     = "TRIM_HORIZON"
 }
 
