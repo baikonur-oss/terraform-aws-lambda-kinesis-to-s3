@@ -1,0 +1,3 @@
+aws_kinesis_agg
+aws-xray-sdk
+python-dateutil

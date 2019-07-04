@@ -1,0 +1,5 @@
+aws_kinesis_agg
+botocore
+aws-xray-sdk
+boto3
+python-dateutil
