@@ -68,7 +68,7 @@ variable "tracing_mode" {
 }
 
 variable "tags" {
-  description = "Resource tags"
+  description = "Tags for Lambda Function"
   type        = "map"
   default     = {}
 }
