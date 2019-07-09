@@ -77,3 +77,8 @@ variable "tags" {
   type        = "map"
   default     = {}
 }
+
+variable "log_retention_in_days" {
+  description = "Lambda Function log retention in days"
+  default     = 30
+}

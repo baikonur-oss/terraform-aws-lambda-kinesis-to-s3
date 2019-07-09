@@ -10,6 +10,12 @@ data "aws_s3_bucket" "logs" {
   bucket = "${var.log_bucket}"
 }
 
+resource "aws_cloudwatch_log_group" "logs" {
+  name = "/aws/lambda/${var.name}"
+
+  retention_in_days = "${var.log_retention_in_days}"
+}
+
 resource "aws_lambda_function" "function" {
   function_name = "${var.name}"
   handler       = "${var.handler}"
@@ -79,7 +85,6 @@ module "iam" {
         {
             "Effect": "Allow",
             "Action": [
-                "logs:CreateLogGroup",
                 "logs:CreateLogStream",
                 "logs:DescribeLogGroups",
                 "logs:DescribeLogStreams",

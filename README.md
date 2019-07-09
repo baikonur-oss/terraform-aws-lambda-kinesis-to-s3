@@ -56,6 +56,7 @@ For more information on module version pinning, see [Selecting a Revision](https
 | log\_bucket | Target S3 bucket to save data to | string | n/a | yes |
 | log\_id\_field | Key name for unique log ID | string | `"log_id"` | no |
 | log\_path\_prefix | Log file path prefix | string | n/a | yes |
+| log\_retention\_in\_days | Lambda Function log retention in days | string | `"30"` | no |
 | log\_timestamp\_field | Key name for log timestamp | string | `"time"` | no |
 | log\_type\_field | Key name for log type | string | `"log_type"` | no |
 | max\_batch\_size | Maximum number of records passed for a single Lambda invocation | string | n/a | yes |
