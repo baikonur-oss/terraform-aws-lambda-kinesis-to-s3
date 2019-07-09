@@ -54,9 +54,11 @@ resource "aws_iam_role_policy_attachment" "xray_access" {
 }
 
 module "iam" {
-  source = "baikonur-oss/aws-iam_nofile?ref=v1.0.0"
-  type   = "lambda"
-  name   = "${var.name}"
+  source  = "baikonur-oss/iam-nofile/aws"
+  version = "v1.0.1"
+
+  type = "lambda"
+  name = "${var.name}"
 
   policy_json = <<EOF
 {
