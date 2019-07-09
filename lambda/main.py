@@ -37,7 +37,6 @@ PATH_PREFIX = os.environ['LOG_S3_PREFIX']
 BUCKET_NAME = os.environ['LOG_S3_BUCKET']
 
 # consts
-os.environ['TZ'] = "Asia/Tokyo"
 LOG_ID_FIELD: str = os.environ['LOG_ID_FIELD']
 LOG_TYPE_FIELD: str = os.environ['LOG_TYPE_FIELD']
 LOG_TIMESTAMP_FIELD: str = os.environ['LOG_TIMESTAMP_FIELD']
