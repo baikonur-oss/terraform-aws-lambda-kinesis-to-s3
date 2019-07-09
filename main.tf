@@ -26,6 +26,8 @@ resource "aws_lambda_function" "function" {
 
   environment {
     variables {
+      TZ = "${var.timezone}"
+
       LOG_ID_FIELD        = "${var.log_id_field}"
       LOG_TYPE_FIELD      = "${var.log_type_field}"
       LOG_TIMESTAMP_FIELD = "${var.log_timestamp_field}"

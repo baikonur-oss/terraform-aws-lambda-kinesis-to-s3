@@ -1,3 +1,8 @@
+variable "timezone" {
+  description = "tz database timezone name (e.g. Asia/Tokyo)"
+  default     = "UTC"
+}
+
 variable "memory" {
   description = "Lambda Function memory in megabytes"
   default     = 256
