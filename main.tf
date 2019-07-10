@@ -26,12 +26,16 @@ resource "aws_lambda_function" "function" {
 
   filename = "${local.package_filename}"
 
-  source_code_hash = "${base64sha256(file("${local.package_filename}"))}"
+  # Below is a very dirty hack to force base64sha256 to wait until 
+  # package download in data.external.package finishes.
+  #
+  # WARNING: explicit depends_on from this resource to data.external.package 
+  # does not help
 
+  source_code_hash = "${base64sha256(file("${jsonencode(data.external.package.result) == "{}" ? local.package_filename : ""}"))}"
   tracing_config {
     mode = "${var.tracing_mode}"
   }
-
   environment {
     variables {
       TZ = "${var.timezone}"
@@ -45,10 +49,7 @@ resource "aws_lambda_function" "function" {
       LOG_S3_PREFIX = "${var.log_path_prefix}"
     }
   }
-
   tags = "${var.tags}"
-
-  depends_on = ["data.external.package"]
 }
 
 resource "aws_lambda_event_source_mapping" "kinesis_mapping" {
