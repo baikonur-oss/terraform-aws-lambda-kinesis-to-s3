@@ -40,7 +40,7 @@ variable "handler" {
 
 variable "runtime" {
   description = "Lambda Function runtime"
-  default     = "python3.6"
+  default     = "python3.7"
 }
 
 variable "name" {

@@ -62,7 +62,7 @@ For more information on module version pinning, see [Selecting a Revision](https
 | max\_batch\_size | Maximum number of records passed for a single Lambda invocation | string | n/a | yes |
 | memory | Lambda Function memory in megabytes | string | `"256"` | no |
 | name | Resource name | string | n/a | yes |
-| runtime | Lambda Function runtime | string | `"python3.6"` | no |
+| runtime | Lambda Function runtime | string | `"python3.7"` | no |
 | starting\_position | Kinesis ShardIterator type (see: https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html ) | string | `"TRIM_HORIZON"` | no |
 | tags | Tags for Lambda Function | map | `<map>` | no |
 | timeout | Lambda Function timeout in seconds | string | `"60"` | no |
