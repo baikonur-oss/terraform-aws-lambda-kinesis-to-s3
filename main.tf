@@ -26,7 +26,7 @@ resource "aws_lambda_function" "function" {
 
   filename = "${local.package_filename}"
 
-  source_code_hash = "${base64sha256("${local.package_filename}")}"
+  source_code_hash = "${base64sha256(file("${local.package_filename}"))}"
 
   tracing_config {
     mode = "${var.tracing_mode}"
