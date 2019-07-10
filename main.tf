@@ -3,7 +3,7 @@ locals {
 }
 
 data "external" "package" {
-  program = ["curl", "-O", "${local.package_filename}", "${var.lambda_package_url}"]
+  program = ["curl", "-s", "-o", "${local.package_filename}", "${var.lambda_package_url}"]
 }
 
 data "aws_s3_bucket" "logs" {
