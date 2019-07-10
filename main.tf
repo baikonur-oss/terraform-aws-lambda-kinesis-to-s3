@@ -1,9 +1,9 @@
 locals {
-  package_filename = "package.zip"
+  package_filename = "${path.module}/package.zip"
 }
 
 data "external" "package" {
-  program = ["curl", "-s", "-o", "${local.package_filename}", "${var.lambda_package_url}"]
+  program = ["bash", "-c", "curl -s -L -o ${local.package_filename} ${var.lambda_package_url} && echo {}"]
 }
 
 data "aws_s3_bucket" "logs" {
@@ -26,6 +26,8 @@ resource "aws_lambda_function" "function" {
 
   filename = "${local.package_filename}"
 
+  source_code_hash = "${base64sha256("${local.package_filename}")}"
+
   tracing_config {
     mode = "${var.tracing_mode}"
   }
@@ -34,9 +36,10 @@ resource "aws_lambda_function" "function" {
     variables {
       TZ = "${var.timezone}"
 
-      LOG_ID_FIELD        = "${var.log_id_field}"
-      LOG_TYPE_FIELD      = "${var.log_type_field}"
-      LOG_TIMESTAMP_FIELD = "${var.log_timestamp_field}"
+      LOG_ID_FIELD            = "${var.log_id_field}"
+      LOG_TYPE_FIELD          = "${var.log_type_field}"
+      LOG_TYPE_UNKNOWN_PREFIX = "${var.log_type_unknown_prefix}"
+      LOG_TIMESTAMP_FIELD     = "${var.log_timestamp_field}"
 
       LOG_S3_BUCKET = "${var.log_bucket}"
       LOG_S3_PREFIX = "${var.log_path_prefix}"
@@ -44,6 +47,8 @@ resource "aws_lambda_function" "function" {
   }
 
   tags = "${var.tags}"
+
+  depends_on = ["data.external.package"]
 }
 
 resource "aws_lambda_event_source_mapping" "kinesis_mapping" {

@@ -62,6 +62,11 @@ variable "log_type_field" {
   default     = "log_type"
 }
 
+variable "log_type_unknown_prefix" {
+  description = "Log type prefix for logs without log type field"
+  default     = "unknown"
+}
+
 variable "log_timestamp_field" {
   description = "Key name for log timestamp"
   default     = "time"

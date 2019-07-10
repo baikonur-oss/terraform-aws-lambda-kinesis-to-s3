@@ -59,6 +59,7 @@ For more information on module version pinning, see [Selecting a Revision](https
 | log\_retention\_in\_days | Lambda Function log retention in days | string | `"30"` | no |
 | log\_timestamp\_field | Key name for log timestamp | string | `"time"` | no |
 | log\_type\_field | Key name for log type | string | `"log_type"` | no |
+| log\_type\_unknown\_prefix | Log type prefix for logs without log type field | string | `"unknown"` | no |
 | max\_batch\_size | Maximum number of records passed for a single Lambda invocation | string | n/a | yes |
 | memory | Lambda Function memory in megabytes | string | `"256"` | no |
 | name | Resource name | string | n/a | yes |
