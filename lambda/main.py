@@ -23,7 +23,7 @@ logger.info('Loading function')
 
 # when debug logging is needed, uncomment following lines:
 # logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
+# logger.setLevel(logging.DEBUG)
 
 # patch boto3 with X-Ray
 libraries = ('boto3', 'botocore')
@@ -127,12 +127,12 @@ def normalize_kinesis_payload(payload: dict):
                 for event in payload['logEvents']:
                     # check if data is JSON and parse
                     try:
-                        logger.debug(event['message'])
+                        logger.debug(f"message: {event['message']}")
                         payload_parsed = json.loads(event['message'])
-                        logger.debug(payload_parsed)
+                        logger.debug(f"parsed payload: {payload_parsed}")
 
                     except JSONDecodeError:
-                        logger.error(f"Non-JSON data found inside CWL message: {payload}, giving up")
+                        logger.debug(f"Non-JSON data found inside CWL message: {event}, giving up")
                         continue
 
                     payloads.append(payload_parsed)
@@ -142,8 +142,7 @@ def normalize_kinesis_payload(payload: dict):
                              f"skipping payload: {payload}")
 
         elif payload['messageType'] == "CONTROL_MESSAGE":
-            logger.info(f"Got CONTROL_MESSAGE from CloudWatch: {payload}")
-            logger.info(f"Skipping CONTROL_MESSAGE")
+            logger.info(f"Got CONTROL_MESSAGE from CloudWatch: {payload}, skipping")
             return payloads
 
         else:
