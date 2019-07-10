@@ -13,19 +13,20 @@ source venv/bin/activate
 
 echo "[2/5] Cleaning cache"
 rm -rf build
-rm -rf package.zip
+rm -rf lambda_package.zip
 
 echo "[3/5] Creating local copy"
 mkdir -p build
-cp *.py build/
+cp lambda/*.py build/
+cp lambda/requirements-deploy.txt build/
 
 echo "[4/5] pip install"
-docker run --rm -v $(pwd):/root/p python:3.7 pip3 install -r /root/p/requirements-deploy.txt -t /root/p/build > /dev/null
+cd build
+docker run --rm -v $(pwd):/root/p python:3.7 pip3 install -r /root/p/requirements-deploy.txt -t /root/p/ > /dev/null
 
 echo "[5/5] Compiling and making zip package"
-cd build
-python -m compileall *.py
-zip -r9 ../package.zip ./ -x ".*" > /dev/null
+python -m compileall .
+zip -r9 ../lambda_package.zip ./ -x ".*" > /dev/null
 cd ..
 
 echo "Finished!"
