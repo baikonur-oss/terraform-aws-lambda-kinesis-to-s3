@@ -24,11 +24,11 @@ resource "aws_kinesis_stream" "stream" {
 module "kinesis_to_s3" {
   source  = "baikonur-oss/lambda-kinesis-to-s3/aws"
 
-  lambda_package_url    = "https://github.com/baikonur-oss/terraform-aws-lambda-kinesis-to-s3/releases/download/v1.0.0/lambda_package.zip"
-  name                  = "kinesis_to_s3"
+  lambda_package_url = "https://github.com/baikonur-oss/terraform-aws-lambda-kinesis-to-s3/releases/download/v1.0.0/lambda_package.zip"
+  name               = "kinesis_to_s3"
 
   kinesis_stream_arn = "${aws_kinesis_stream.stream.arn}"
-  batch_size = "100"
+  batch_size         = "100"
   log_bucket         = "example-bucket"
   log_path_prefix    = "foo/bar"
 }
@@ -38,8 +38,16 @@ module "kinesis_to_s3" {
 Warning: use same module and package versions!
 
 ### Version pinning
-Make sure to use `?ref=` version pinning in module source URI.
-This will save you from a lot of troubles.
+#### Terraform Module Registry
+Use `version` parameter to pin to a specific version, or to specify a version constraint when pulling from [Terraform Module Registry](https://registry.terraform.io) (`source = baikonur-oss/lambda-kinesis-to-s3
+/aws`).
+For more information, refer to [Module Versions](https://www.terraform.io/docs/configuration/modules.html#module-versions) section of Terraform Modules documentation.
+
+#### GitHub URI
+Make sure to use `?ref=` version pinning in module source URI when pulling from GitHub.
+Pulling from GitHub is especially useful for development, as you can pin to a specific branch, tag or commit hash.
+Example: `source = github.com/baikonur-oss/terraform-aws-lambda-kinesis-to-s3
+?ref=v1.0.0`
 
 For more information on module version pinning, see [Selecting a Revision](https://www.terraform.io/docs/modules/sources.html#selecting-a-revision) section of Terraform Modules documentation.
 
