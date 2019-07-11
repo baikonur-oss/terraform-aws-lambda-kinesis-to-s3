@@ -39,15 +39,13 @@ Warning: use same module and package versions!
 
 ### Version pinning
 #### Terraform Module Registry
-Use `version` parameter to pin to a specific version, or to specify a version constraint when pulling from [Terraform Module Registry](https://registry.terraform.io) (`source = baikonur-oss/lambda-kinesis-to-s3
-/aws`).
+Use `version` parameter to pin to a specific version, or to specify a version constraint when pulling from [Terraform Module Registry](https://registry.terraform.io) (`source = baikonur-oss/lambda-kinesis-to-s3/aws`).
 For more information, refer to [Module Versions](https://www.terraform.io/docs/configuration/modules.html#module-versions) section of Terraform Modules documentation.
 
 #### GitHub URI
 Make sure to use `?ref=` version pinning in module source URI when pulling from GitHub.
 Pulling from GitHub is especially useful for development, as you can pin to a specific branch, tag or commit hash.
-Example: `source = github.com/baikonur-oss/terraform-aws-lambda-kinesis-to-s3
-?ref=v1.0.0`
+Example: `source = github.com/baikonur-oss/terraform-aws-lambda-kinesis-to-s3?ref=v1.0.0`
 
 For more information on module version pinning, see [Selecting a Revision](https://www.terraform.io/docs/modules/sources.html#selecting-a-revision) section of Terraform Modules documentation.
 
