@@ -238,7 +238,7 @@ def upload_by_type(log_dict: dict):
         subsegment.put_annotation('type', log_type)
         subsegment.put_annotation('count', len(records))
 
-        data = '\n'.join(str(record) for record in records)
+        data = '\n'.join(json.dumps(record) for record in records)
         put_to_s3(key, BUCKET_NAME, data)
 
         xray_recorder.end_subsegment()
