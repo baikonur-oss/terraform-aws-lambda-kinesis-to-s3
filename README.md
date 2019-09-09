@@ -56,6 +56,7 @@ For more information on module version pinning, see [Selecting a Revision](https
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
+| batch\_size | Maximum number of records passed for a single Lambda invocation | string | n/a | yes |
 | handler | Lambda Function handler (entrypoint) | string | `"main.handler"` | no |
 | kinesis\_stream\_arn | Source Kinesis Data Streams stream name | string | n/a | yes |
 | lambda\_package\_url | Lambda package URL (see Usage in README) | string | n/a | yes |
@@ -66,7 +67,6 @@ For more information on module version pinning, see [Selecting a Revision](https
 | log\_timestamp\_field | Key name for log timestamp | string | `"time"` | no |
 | log\_type\_field | Key name for log type | string | `"log_type"` | no |
 | log\_type\_unknown\_prefix | Log type prefix for logs without log type field | string | `"unknown"` | no |
-| max\_batch\_size | Maximum number of records passed for a single Lambda invocation | string | n/a | yes |
 | memory | Lambda Function memory in megabytes | string | `"256"` | no |
 | name | Resource name | string | n/a | yes |
 | runtime | Lambda Function runtime | string | `"python3.7"` | no |
