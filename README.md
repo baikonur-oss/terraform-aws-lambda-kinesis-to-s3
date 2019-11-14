@@ -2,7 +2,7 @@
 
 Terraform module and Lambda for saving JSON log records from Kinesis Data Streams to S3.
 
-![terraform v0.11.x](https://img.shields.io/badge/terraform-v0.11.x-brightgreen.svg)
+![terraform v0.12.x](https://img.shields.io/badge/terraform-v0.12.x-brightgreen.svg)
 
 ## Prerequisites
 1. Records in Kinesis stream must be valid JSON data. Non-JSON data will be saved with `unknown` prefix.
@@ -23,16 +23,16 @@ resource "aws_kinesis_stream" "stream" {
 
 module "kinesis_to_s3" {
   source  = "baikonur-oss/lambda-kinesis-to-s3/aws"
+  version = "2.0.0"
 
-  lambda_package_url = "https://github.com/baikonur-oss/terraform-aws-lambda-kinesis-to-s3/releases/download/v1.0.0/lambda_package.zip"
+  lambda_package_url = "https://github.com/baikonur-oss/terraform-aws-lambda-kinesis-to-s3/releases/download/v2.0.0/lambda_package.zip"
   name               = "kinesis_to_s3"
 
-  kinesis_stream_arn = "${aws_kinesis_stream.stream.arn}"
+  kinesis_stream_arn = aws_kinesis_stream.stream.arn
   batch_size         = "100"
   log_bucket         = "example-bucket"
   log_path_prefix    = "foo/bar"
 }
-
 ```
 
 Warning: use same module and package versions!
@@ -71,7 +71,7 @@ For more information on module version pinning, see [Selecting a Revision](https
 | name | Resource name | string | n/a | yes |
 | runtime | Lambda Function runtime | string | `"python3.7"` | no |
 | starting\_position | Kinesis ShardIterator type (see: https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html ) | string | `"TRIM_HORIZON"` | no |
-| tags | Tags for Lambda Function | map | `<map>` | no |
+| tags | Tags for Lambda Function | map(string) | `{}` | no |
 | timeout | Lambda Function timeout in seconds | string | `"60"` | no |
 | timezone | tz database timezone name (e.g. Asia/Tokyo) | string | `"UTC"` | no |
 | tracing\_mode | X-Ray tracing mode (see: https://docs.aws.amazon.com/lambda/latest/dg/API_TracingConfig.html ) | string | `"PassThrough"` | no |
