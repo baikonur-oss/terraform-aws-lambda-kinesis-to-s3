@@ -96,7 +96,7 @@ def append_to_dict(dictionary: dict, log_type: str, log_data: object, log_timest
 
     dictionary[log_type]['records'].append(log_data)
 
-    
+
 def normalize_kinesis_payload(p: dict):
     # Normalize messages from CloudWatch (subscription filters) and pass through anything else
     # https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/logs/SubscriptionFilters.html
@@ -133,7 +133,8 @@ def normalize_kinesis_payload(p: dict):
                         logger.debug(f"parsed payload: {payload_parsed}")
 
                         if type(payload_parsed) is not dict:
-                            logger.error(f"Top-level JSON data in CWL payload is not an object, giving up: {payload}")
+                            logger.error(f"Top-level JSON data in CWL payload is not an object, giving up: "
+                                         f"{payload_parsed}")
                             continue
 
                     except JSONDecodeError as e:
@@ -156,7 +157,7 @@ def normalize_kinesis_payload(p: dict):
             raise ValueError(f"Unknown messageType: {payload}")
     else:
         payloads.append(payload)
-        
+
     return payloads
 
 
