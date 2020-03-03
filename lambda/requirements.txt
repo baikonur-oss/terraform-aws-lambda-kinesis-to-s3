@@ -1,5 +1,5 @@
 aws_kinesis_agg==1.1.2
-botocore
+botocore==1.15.12
 aws-xray-sdk==2.4.3
 boto3
 python-dateutil==2.8.1
