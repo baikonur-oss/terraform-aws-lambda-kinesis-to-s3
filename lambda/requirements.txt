@@ -1,4 +1,4 @@
-aws_kinesis_agg
+aws_kinesis_agg==1.1.2
 botocore
 aws-xray-sdk
 boto3
