@@ -1,5 +1,6 @@
+boto3 # pyup: ignore
+botocore # pyup: ignore
+
 aws_kinesis_agg==1.1.2
-botocore==1.15.12
 aws-xray-sdk==2.4.3
-boto3==1.12.12
 python-dateutil==2.8.1
