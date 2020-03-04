@@ -45,6 +45,7 @@ resource "aws_lambda_function" "function" {
       LOG_TYPE_FIELD          = var.log_type_field
       LOG_TYPE_UNKNOWN_PREFIX = var.log_type_unknown_prefix
       LOG_TIMESTAMP_FIELD     = var.log_timestamp_field
+      LOG_TYPE_WHITELIST      = join(",", var.log_type_field_whitelist)
       LOG_S3_BUCKET           = var.log_bucket
       LOG_S3_PREFIX           = var.log_path_prefix
     }
