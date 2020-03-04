@@ -1,4 +1,5 @@
-aws_kinesis_agg
-aws-xray-sdk
-python-dateutil
+aws_kinesis_agg==1.1.2
+aws-xray-sdk==2.4.3
+boto3==1.12.12
+python-dateutil==2.8.1
 amazon_kinesis_utils==0.1.6
