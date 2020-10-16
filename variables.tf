@@ -72,6 +72,12 @@ variable "log_timestamp_field" {
   default     = "time"
 }
 
+variable "log_type_field_whitelist" {
+  description = "Log type whitelist (if empty, all types will be processed)"
+  default     = []
+  type        = list(string)
+}
+
 variable "tracing_mode" {
   description = "X-Ray tracing mode (see: https://docs.aws.amazon.com/lambda/latest/dg/API_TracingConfig.html )"
   default     = "PassThrough"
