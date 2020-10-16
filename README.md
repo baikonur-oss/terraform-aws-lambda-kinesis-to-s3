@@ -24,9 +24,9 @@ resource "aws_kinesis_stream" "stream" {
 
 module "kinesis_to_s3" {
   source  = "baikonur-oss/lambda-kinesis-to-s3/aws"
-  version = "2.0.0"
+  version = "2.1.0"
 
-  lambda_package_url = "https://github.com/baikonur-oss/terraform-aws-lambda-kinesis-to-s3/releases/download/v2.0.0/lambda_package.zip"
+  lambda_package_url = "https://github.com/baikonur-oss/terraform-aws-lambda-kinesis-to-s3/releases/download/v2.1.0/lambda_package.zip"
   name               = "kinesis_to_s3"
 
   kinesis_stream_arn = aws_kinesis_stream.stream.arn
