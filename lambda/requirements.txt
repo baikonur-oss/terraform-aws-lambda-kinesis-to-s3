@@ -3,5 +3,5 @@ botocore # pyup: ignore
 
 aws_kinesis_agg==1.1.3
 aws-xray-sdk==2.6.0
-python-dateutil==2.8.1
+python-dateutil==2.9.0.post0
 amazon_kinesis_utils==0.1.8
